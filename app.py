@@ -15,10 +15,11 @@ import os
 st.set_page_config(
     page_title="Handwritten Digit Generator",
     page_icon="🔢",
-    layout="wide"
+    layout="wide",
+    initial_sidebar_state="expanded"
 )
 
-# Define the Generator model (lightweight for easy deployment)
+# Define the Generator model
 class Generator(nn.Module):
     def __init__(self, latent_dim=100):
         super(Generator, self).__init__()
@@ -295,12 +296,11 @@ def main():
     col1, col2 = st.columns(2)
     
     with col1:
-        st.subheader("🤖 Model Architecture")
+        st.subheader(" Model Architecture")
         st.markdown("""
         - **Generator**: Conditional GAN with ~0.5M parameters
         - **Training**: MNIST dataset (28x28 grayscale)
         - **Framework**: PyTorch
-        - **Deployment**: Streamlit
         """)
     
     with col2:
@@ -314,7 +314,7 @@ def main():
         """)
     
     # Technical details
-    with st.expander("🔧 Technical Details"):
+    with st.expander("Technical Details"):
         st.markdown("""
         **Model Specifications:**
         - Generator: 4-layer MLP with BatchNorm and ReLU
@@ -331,7 +331,6 @@ def main():
         **Deployment:**
         - Framework: Streamlit
         - Model size: ~2MB
-        - CPU inference: <100ms per batch
         """)
 
 if __name__ == "__main__":
